@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "outDir": "dist",
+    "allowJs": true,
+    "checkJs": true,
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "alwaysStrict": true
+  },
+  "include": ["./src",
+    "src/module.d.ts"
+  ]
+}

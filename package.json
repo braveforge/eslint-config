@@ -1,0 +1,36 @@
+{
+  "name": "@braveforge/eslint-config",
+  "version": "0.0.9",
+  "description": "ESLint config for Brave Forge",
+  "license": "MIT",
+  "author": "shixianqin",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "build": "rm -rf ./dist && tsc"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.25.0",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "eslint-plugin-import-x": "^4.10.6",
+    "eslint-plugin-n": "^17.17.0",
+    "eslint-plugin-package-json": "0.30.0",
+    "eslint-plugin-perfectionist": "^4.11.0",
+    "eslint-plugin-switch-case": "^3.0.1",
+    "eslint-plugin-unicorn": "^58.0.0",
+    "typescript-eslint": "^8.30.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "jiti": "^2.4.2",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "eslint": "^9.25.0"
+  }
+}
