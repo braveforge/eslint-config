@@ -22,6 +22,7 @@ npm i @braveforge/eslint-config -D
 
 ```ts
 // ---
+// --- description...
 ```
 
 Applicable to:
