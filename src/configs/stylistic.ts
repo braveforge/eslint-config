@@ -206,8 +206,7 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
   ],
   'space-unary-ops': [
     {
-      nonwords: true,
-      overrides: { '!': false },
+      nonwords: false,
       words: true,
     },
   ],
@@ -247,7 +246,7 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
   'wrap-regex': undefined,
   'yield-star-spacing': ['after'],
 
-  // ---
+  // --- jsx
   'jsx-child-element-spacing': undefined,
   'jsx-closing-bracket-location': ['tag-aligned'],
   'jsx-closing-tag-location': ['tag-aligned'],
