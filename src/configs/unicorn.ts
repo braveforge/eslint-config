@@ -12,7 +12,7 @@ export const unicornConfigs: Linter.Config[] = [
       'unicorn/catch-error-name': ['error'],
       'unicorn/consistent-assert': ['error'],
       'unicorn/consistent-date-clone': ['error'],
-      'unicorn/consistent-destructuring': ['error'],
+      // 'unicorn/consistent-destructuring': ['error'],
       'unicorn/consistent-empty-array-spread': ['error'],
       'unicorn/consistent-existence-index-check': ['error'],
       'unicorn/consistent-function-scoping': ['error'],
