@@ -1,5 +1,4 @@
 import importX from 'eslint-plugin-import-x';
-
 import type { ConfigArray } from 'typescript-eslint';
 
 export const importXConfigs: ConfigArray = [

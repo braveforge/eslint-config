@@ -1,5 +1,4 @@
 import packageJson from 'eslint-plugin-package-json';
-
 import type { Linter } from 'eslint';
 
 export const packageJsonConfigs: Linter.Config[] = [

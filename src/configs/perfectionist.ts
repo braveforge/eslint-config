@@ -1,5 +1,4 @@
 import perfectionist from 'eslint-plugin-perfectionist';
-
 import type { Linter } from 'eslint';
 
 const partitionByComment = {
@@ -7,16 +6,20 @@ const partitionByComment = {
 };
 
 const sortObjectTypesOptions = {
+  partitionByComment,
   groups: [
     'required-property',
+    'required-multiline-property',
     'required-method',
+    'required-multiline-method',
     'optional-property',
+    'optional-multiline-property',
     'optional-method',
+    'optional-multiline-method',
     'required-index-signature',
     'optional-index-signature',
     'unknown',
   ],
-  partitionByComment,
 };
 
 const sortCompoundTypesOptions = {
@@ -44,14 +47,23 @@ export const perfectionistConfigs: Linter.Config[] = [
     },
     rules: {
       'perfectionist/sort-array-includes': ['error'],
+      'perfectionist/sort-decorators': ['error'],
+      'perfectionist/sort-enums': ['error'],
+      'perfectionist/sort-heritage-clauses': ['error'],
+      'perfectionist/sort-interfaces': ['error', sortObjectTypesOptions],
+      'perfectionist/sort-intersection-types': ['error', sortCompoundTypesOptions],
+      // 'perfectionist/sort-jsx-props': ['error'], // Using `@stylistic/jsx-sort-props`
+      'perfectionist/sort-maps': ['error'],
+      'perfectionist/sort-object-types': ['error', sortObjectTypesOptions],
+      'perfectionist/sort-sets': ['error'],
+      'perfectionist/sort-switch-case': ['error'],
+      'perfectionist/sort-union-types': ['error', sortCompoundTypesOptions],
       'perfectionist/sort-classes': [
         'error',
         {
           partitionByComment,
         },
       ],
-      'perfectionist/sort-decorators': ['error'],
-      'perfectionist/sort-enums': ['error'],
       'perfectionist/sort-exports': [
         'error',
         {
@@ -59,10 +71,12 @@ export const perfectionistConfigs: Linter.Config[] = [
           partitionByComment,
         },
       ],
-      'perfectionist/sort-heritage-clauses': ['error'],
       'perfectionist/sort-imports': [
         'error',
         {
+          internalPattern: ['^#', '^[~@]+/'],
+          newlinesBetween: 'ignore',
+          partitionByComment,
           groups: [
             'side-effect-style',
             'style',
@@ -74,26 +88,17 @@ export const perfectionistConfigs: Linter.Config[] = [
             'parent',
             'sibling',
             'index',
-            { newlinesBetween: 'always' },
             'builtin-type',
             'external-type',
             'internal-type',
             'parent-type',
             'sibling-type',
             'index-type',
-            { newlinesBetween: 'always' },
             'unknown', // `import foo = bar`
             // 'object',
           ],
-          internalPattern: ['^#', '^[~@]+/'],
-          newlinesBetween: 'ignore',
-          partitionByComment,
         },
       ],
-      'perfectionist/sort-interfaces': ['error', sortObjectTypesOptions],
-      'perfectionist/sort-intersection-types': ['error', sortCompoundTypesOptions],
-      // 'perfectionist/sort-jsx-props': ['error'], // Using `@stylistic/jsx-sort-props`
-      'perfectionist/sort-maps': ['error'],
       'perfectionist/sort-modules': [
         'error',
         {
@@ -131,20 +136,18 @@ export const perfectionistConfigs: Linter.Config[] = [
           groupKind: 'values-first',
         },
       ],
-      'perfectionist/sort-object-types': ['error', sortObjectTypesOptions],
       'perfectionist/sort-objects': [
         'error',
         {
+          partitionByComment,
           groups: [
             'property',
+            'multiline-property',
             'method',
+            'multiline-method',
           ],
-          partitionByComment,
         },
       ],
-      'perfectionist/sort-sets': ['error'],
-      'perfectionist/sort-switch-case': ['error'],
-      'perfectionist/sort-union-types': ['error', sortCompoundTypesOptions],
       // 'perfectionist/sort-variable-declarations': ['error'],
     },
     settings: {

@@ -5,7 +5,6 @@ import { perfectionistConfigs } from './perfectionist.js';
 import { stylisticConfigs } from './stylistic.js';
 import { typescriptConfigs } from './typescript.js';
 import { unicornConfigs } from './unicorn.js';
-
 import type { ConfigArray } from 'typescript-eslint';
 
 export const allConfigs: ConfigArray = [

@@ -5,6 +5,7 @@ export const typescriptConfigs: ConfigArray = [
   {
     rules: {
       '@typescript-eslint/no-explicit-any': ['warn'],
+      '@typescript-eslint/no-require-imports': ['warn'],
       '@typescript-eslint/no-namespace': [
         'error',
         {
@@ -12,7 +13,6 @@ export const typescriptConfigs: ConfigArray = [
           allowDefinitionFiles: true,
         },
       ],
-      '@typescript-eslint/no-require-imports': ['warn'],
     },
   },
 ];

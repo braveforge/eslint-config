@@ -1,7 +1,5 @@
 import stylistic, { type UnprefixedRuleOptions } from '@stylistic/eslint-plugin';
-// @ts-expect-error ignore
 import switchCase from 'eslint-plugin-switch-case';
-
 import type { Linter } from 'eslint';
 
 type BlankLineRule = UnprefixedRuleOptions['padding-line-between-statements'][0];
@@ -79,6 +77,7 @@ export const stylisticSpacingBetweenConfigs: Linter.Config[] = [
       '@stylistic-enhanced': stylistic,
     },
     rules: {
+      '@stylistic/padding-line-between-statements': ['error', ...blankLineRules],
       '@stylistic/lines-between-class-members': [
         'error',
         {
@@ -96,7 +95,7 @@ export const stylisticSpacingBetweenConfigs: Linter.Config[] = [
           ],
         },
       ],
-      '@stylistic/padding-line-between-statements': ['error', ...blankLineRules],
+
       // ---
       '@stylistic-enhanced/lines-between-class-members': [
         'error',

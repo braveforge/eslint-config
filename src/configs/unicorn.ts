@@ -1,5 +1,4 @@
 import unicorn from 'eslint-plugin-unicorn';
-
 import type { Linter } from 'eslint';
 
 export const unicornConfigs: Linter.Config[] = [
@@ -22,12 +21,6 @@ export const unicornConfigs: Linter.Config[] = [
       'unicorn/escape-case': ['error'],
       // 'unicorn/expiring-todo-comments': ['error'],
       'unicorn/explicit-length-check': ['error'],
-      'unicorn/filename-case': [
-        'error',
-        {
-          case: 'kebabCase',
-        },
-      ],
       // 'unicorn/import-style': ['error'],
       'unicorn/new-for-builtins': ['error'],
       'unicorn/no-abusive-eslint-disable': ['error'],
@@ -137,14 +130,20 @@ export const unicornConfigs: Linter.Config[] = [
       // 'unicorn/require-post-message-target-origin': ['error'],
       // 'unicorn/string-content': ['error'],
       'unicorn/switch-case-braces': ['error'],
+      'unicorn/text-encoding-identifier-case': ['error'],
+      'unicorn/throw-new-error': ['error'],
+      'unicorn/filename-case': [
+        'error',
+        {
+          case: 'kebabCase',
+        },
+      ],
       'unicorn/template-indent': [
         'error',
         {
           selectors: ['TemplateLiteral'],
         },
       ],
-      'unicorn/text-encoding-identifier-case': ['error'],
-      'unicorn/throw-new-error': ['error'],
     },
   },
 ];
