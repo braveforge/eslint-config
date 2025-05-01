@@ -15,7 +15,7 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
   'func-call-spacing': undefined,
   'function-call-argument-newline': ['consistent'],
   'function-call-spacing': ['never'],
-  'function-paren-newline': ['multiline'],
+  'function-paren-newline': ['multiline-arguments'],
   'generator-star-spacing': ['after'],
   'implicit-arrow-linebreak': ['beside'],
   'indent-binary-ops': [2],
