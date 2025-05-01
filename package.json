@@ -1,11 +1,12 @@
 {
   "name": "@braveforge/eslint-config",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "ESLint config for Brave Forge",
   "license": "MIT",
   "author": "shixianqin",
   "type": "module",
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./index.d.ts",
   "files": [
     "dist",
