@@ -1,9 +1,6 @@
-import perfectionist from 'eslint-plugin-perfectionist';
 import type { Linter } from 'eslint';
-
-const partitionByComment = {
-  line: String.raw`^---(\s|$)`,
-};
+import perfectionist from 'eslint-plugin-perfectionist';
+import { partitionByComment } from './perfectionist-partition-comment';
 
 const sortObjectTypesOptions = {
   partitionByComment,
@@ -88,14 +85,8 @@ export const perfectionistConfigs: Linter.Config[] = [
             'parent',
             'sibling',
             'index',
-            'builtin-type',
-            'external-type',
-            'internal-type',
-            'parent-type',
-            'sibling-type',
-            'index-type',
+            { newlinesBetween: 'always' },
             'unknown', // `import foo = bar`
-            // 'object',
           ],
         },
       ],
