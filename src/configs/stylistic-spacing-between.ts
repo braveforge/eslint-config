@@ -1,6 +1,6 @@
 import stylistic, { type UnprefixedRuleOptions } from '@stylistic/eslint-plugin';
-import switchCase from 'eslint-plugin-switch-case';
 import type { Linter } from 'eslint';
+import switchCase from 'eslint-plugin-switch-case';
 
 type BlankLineRule = UnprefixedRuleOptions['padding-line-between-statements'][0];
 type StatementType = BlankLineRule['next'];
