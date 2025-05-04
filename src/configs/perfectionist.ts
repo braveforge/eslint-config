@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
 import perfectionist from 'eslint-plugin-perfectionist';
-import { partitionByComment } from './perfectionist-partition-comment';
+import { partitionByComment } from './perfectionist-partition-comment.js';
 
 const sortObjectTypesOptions = {
   partitionByComment,
