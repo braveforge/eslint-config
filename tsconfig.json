@@ -8,9 +8,8 @@
     "checkJs": true,
     "verbatimModuleSyntax": true,
     "strict": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "jsx": "preserve"
   },
-  "include": ["./src",
-    "src/module.d.ts"
-  ]
+  "include": ["./src"]
 }

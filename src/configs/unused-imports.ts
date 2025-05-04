@@ -1,5 +1,5 @@
-import unusedImports from 'eslint-plugin-unused-imports';
 import type { Linter } from 'eslint';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 export const unusedImportsConfigs: Linter.Config[] = [
   {

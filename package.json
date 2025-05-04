@@ -1,6 +1,6 @@
 {
   "name": "@braveforge/eslint-config",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "ESLint config for Brave Forge",
   "license": "MIT",
   "author": "shixianqin",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
     "jiti": "^2.4.2",
     "typescript": "^5.8.3"
   },

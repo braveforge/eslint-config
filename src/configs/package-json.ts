@@ -1,5 +1,5 @@
-import packageJson from 'eslint-plugin-package-json';
 import type { Linter } from 'eslint';
+import packageJson from 'eslint-plugin-package-json';
 
 export const packageJsonConfigs: Linter.Config[] = [
   packageJson.configs.recommended,
