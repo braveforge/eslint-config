@@ -72,7 +72,7 @@ export const perfectionistConfigs: Linter.Config[] = [
         'error',
         {
           internalPattern: ['^#', '^[~@]+/'],
-          newlinesBetween: 'ignore',
+          newlinesBetween: 'never',
           partitionByComment,
           groups: [
             'side-effect-style',

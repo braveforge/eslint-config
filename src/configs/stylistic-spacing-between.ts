@@ -5,68 +5,76 @@ import switchCase from 'eslint-plugin-switch-case';
 type BlankLineRule = UnprefixedRuleOptions['padding-line-between-statements'][0];
 type StatementType = BlankLineRule['next'];
 
-const exportStatements: StatementType = ['export', 'cjs-export', 'exports'];
-
-const statements: StatementType = [
-  ...exportStatements,
-  'enum',
-  'type',
-  'interface',
-  'directive',
+// 相同的语句在单行的情况下不强制空行，但是需要在与不同语句组之间强制空行的语句
+const groupStatements = [
+  'cjs-export',
+  'const',
+  'export',
+  'exports',
   'import',
+  'let',
+  'type',
+  'var',
+] satisfies StatementType;
+
+// 永远强制空行的语句
+const alwaysStatements = [
+  'block-like', // if, switch, for, do, while, with, try, function, class, block...
   'debugger',
-  'throw',
-  'block-like',
-  'multiline-var',
-  'multiline-let',
+  'directive',
+  'enum',
+  'interface',
   'multiline-const',
   'multiline-export',
   'multiline-expression',
-];
+  'multiline-let',
+  'multiline-var',
+  'return',
+  'throw',
+] satisfies StatementType;
 
 const blankLineRules: BlankLineRule[] = [
+  // 强制不同语句组之间空行
   {
     blankLine: 'always',
-    next: statements,
+    next: groupStatements,
     prev: '*',
   },
   {
     blankLine: 'always',
     next: '*',
-    prev: statements,
+    prev: groupStatements,
   },
-  // Ignore spacing between `type`
+
+  // 相同语句之间不允许空行（多行语句会被覆盖强制空行）
+  // 忽略 `import`：使用 `perfectionist/sort-import` 规则验证
+  // 忽略 `type`：因为目前还没有规则区分 type 的单行和多行，允许手动空行
+  ...groupStatements.map(
+    (statement): BlankLineRule => ({
+      blankLine: statement === 'import' || statement === 'type' ? 'any' : 'never',
+      next: statement,
+      prev: statement,
+    }),
+  ),
+
+  // 强制空行（覆盖：在一组语句中的多行语句强制前后空行）
   {
-    blankLine: 'any',
-    next: 'type',
-    prev: 'type',
+    blankLine: 'always',
+    next: alwaysStatements,
+    prev: '*',
   },
   {
-    // Ignore spacing between `case-block`
-    // Using `eslint-plugin-switch-case`
+    blankLine: 'always',
+    next: '*',
+    prev: alwaysStatements,
+  },
+
+  // 忽略 case 块之间的空行 (覆盖 `block-like`)
+  // 使用 `eslint-plugin-switch-case` 规则验证
+  {
     blankLine: 'any',
     next: ['case', 'default'],
     prev: 'case',
-  },
-  {
-    // Ignore spacing between `imports`
-    // Using `perfectionist/sort-imports`
-    blankLine: 'any',
-    next: 'import',
-    prev: 'import',
-  },
-  {
-    // Ignore spacing between `exports`
-    blankLine: 'any',
-    next: exportStatements,
-    prev: exportStatements,
-  },
-  {
-    // Always spacing between `multiline-exports`
-    // The `multiline-expression` here matches commonjs's `exports` and `module.exports`
-    blankLine: 'always',
-    next: ['multiline-export', 'multiline-expression'],
-    prev: exportStatements,
   },
 ];
 
@@ -78,6 +86,8 @@ export const stylisticSpacingBetweenConfigs: Linter.Config[] = [
     },
     rules: {
       '@stylistic/padding-line-between-statements': ['error', ...blankLineRules],
+
+      // Class 方法成员之间强制空行
       '@stylistic/lines-between-class-members': [
         'error',
         {
@@ -97,6 +107,8 @@ export const stylisticSpacingBetweenConfigs: Linter.Config[] = [
       ],
 
       // ---
+
+      // 叠加: Class 多行属性成员之间强制空行
       '@stylistic-enhanced/lines-between-class-members': [
         'error',
         'always',
