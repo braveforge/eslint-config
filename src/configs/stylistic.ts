@@ -1,91 +1,136 @@
 import stylistic, { type UnprefixedRuleOptions } from '@stylistic/eslint-plugin';
 import type { Linter } from 'eslint';
+import type { ConfigArray } from 'typescript-eslint';
 import { stylisticSpacingBetweenConfigs } from './stylistic-spacing-between.js';
 
-const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOptions[K] } = {
+const rules: Partial<UnprefixedRuleOptions> = {
+  'array-bracket-newline': [],
   'array-bracket-spacing': ['never'],
-  'arrow-parens': ['always'],
-  'block-spacing': ['always'],
-  'brace-style': ['stroustrup'],
-  'comma-dangle': ['always-multiline'],
-  'comma-style': ['last'],
-  'computed-property-spacing': ['never'],
-  'dot-location': ['property'],
-  'eol-last': ['always'],
-  'func-call-spacing': undefined,
-  'function-call-argument-newline': ['consistent'],
-  'function-call-spacing': ['never'],
-  'function-paren-newline': ['multiline-arguments'],
-  'generator-star-spacing': ['after'],
-  'implicit-arrow-linebreak': ['beside'],
-  'indent-binary-ops': [2],
-  'line-comment-position': undefined,
-  'linebreak-style': ['unix'],
-  'lines-between-class-members': undefined,
-  'max-len': undefined,
-  'multiline-comment-style': undefined,
-  'multiline-ternary': ['always-multiline'],
-  'new-parens': ['always'],
-  'newline-per-chained-call': undefined,
-  'no-confusing-arrow': [],
-  'no-extra-semi': [],
-  'no-floating-decimal': [],
-  'no-mixed-operators': [],
-  'no-mixed-spaces-and-tabs': [],
-  'no-multi-spaces': [],
-  'no-tabs': [],
-  'no-whitespace-before-property': [],
-  'nonblock-statement-body-position': ['beside'],
-  'one-var-declaration-per-line': ['initializations'],
-  'padded-blocks': ['never'],
-  'padding-line-between-statements': undefined,
-  'quote-props': ['as-needed'],
-  'rest-spread-spacing': ['never'],
-  'semi-style': ['last'],
-  'space-before-blocks': ['always'],
-  'space-before-function-paren': ['always'],
-  'space-in-parens': ['never'],
-  'template-curly-spacing': ['never'],
-  'template-tag-spacing': ['never'],
-  'type-generic-spacing': [],
-  'type-named-tuple-spacing': [],
-  'wrap-iife': ['inside'],
-  'wrap-regex': undefined,
-  'yield-star-spacing': ['after'],
-  'array-bracket-newline': [
-    {
-      multiline: true,
-    },
-  ],
   'array-element-newline': [
     {
       consistent: true,
       multiline: true,
     },
   ],
+  'arrow-parens': ['always'],
   'arrow-spacing': [
     {
       after: true,
       before: true,
     },
   ],
+  'block-spacing': ['always'],
+  'brace-style': ['stroustrup'],
+  'comma-dangle': ['always-multiline'],
   'comma-spacing': [
     {
       after: true,
       before: false,
     },
   ],
+  'comma-style': ['last'],
+  'computed-property-spacing': ['never'],
   'curly-newline': [
     {
       consistent: true,
       multiline: true,
     },
   ],
+  'dot-location': ['property'],
+  'eol-last': ['always'],
+  'function-call-argument-newline': ['consistent'],
+  'function-call-spacing': ['never'],
+  'function-paren-newline': ['multiline-arguments'],
+  'generator-star-spacing': ['after'],
+  'implicit-arrow-linebreak': ['beside'],
   indent: [
     2,
     {
       SwitchCase: 1,
       VariableDeclarator: 'first',
+    },
+  ],
+  'indent-binary-ops': [2],
+  // --- jsx
+  'jsx-closing-bracket-location': ['tag-aligned'],
+  'jsx-closing-tag-location': ['tag-aligned'],
+  'jsx-curly-brace-presence': [
+    {
+      children: 'never',
+      propElementValues: 'always',
+      props: 'never',
+    },
+  ],
+  'jsx-curly-newline': [
+    {
+      multiline: 'require',
+      singleline: 'consistent',
+    },
+  ],
+  'jsx-curly-spacing': [
+    {
+      attributes: {
+        when: 'never',
+      },
+      children: {
+        when: 'never',
+      },
+      spacing: {
+        objectLiterals: 'never',
+      },
+    },
+  ],
+  'jsx-equals-spacing': ['never'],
+  'jsx-first-prop-new-line': ['multiline'],
+  'jsx-function-call-newline': ['multiline'],
+  'jsx-max-props-per-line': [
+    {
+      maximum: 1,
+      when: 'multiline',
+    },
+  ],
+  'jsx-newline': [
+    {
+      allowMultilines: true,
+      prevent: true,
+    },
+  ],
+  'jsx-pascal-case': [
+    {
+      allowAllCaps: true,
+      allowLeadingUnderscore: true,
+      allowNamespace: true,
+    },
+  ],
+  'jsx-props-no-multi-spaces': [],
+  'jsx-quotes': ['prefer-double'],
+  'jsx-self-closing-comp': [
+    {
+      component: true,
+      html: true,
+    },
+  ],
+  'jsx-sort-props': [
+    {
+      callbacksLast: true,
+      // shorthandFirst: true,
+    },
+  ],
+  'jsx-tag-spacing': [
+    {
+      beforeSelfClosing: 'always',
+    },
+  ],
+  'jsx-wrap-multilines': [
+    {
+      arrow: 'parens-new-line',
+      assignment: 'parens-new-line',
+      condition: 'parens-new-line',
+      declaration: 'parens-new-line',
+      logical: 'parens-new-line',
+      prop: 'parens-new-line',
+      propertyValue: 'parens-new-line',
+      return: 'parens-new-line',
     },
   ],
   'key-spacing': [
@@ -100,6 +145,7 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       before: true,
     },
   ],
+  'linebreak-style': ['unix'],
   'lines-around-comment': [
     {
       afterHashbangComment: true,
@@ -116,12 +162,12 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
   ],
   'max-statements-per-line': [
     {
-      max: 1,
       ignoredNodes: [
         'BreakStatement',
         'ContinueStatement',
         'ReturnStatement',
       ],
+      max: 1,
     },
   ],
   'member-delimiter-style': [
@@ -136,6 +182,9 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       },
     },
   ],
+  'multiline-ternary': ['always-multiline'],
+  'new-parens': ['always'],
+  'no-confusing-arrow': [],
   'no-extra-parens': [
     'all',
     {
@@ -152,6 +201,11 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       ternaryOperandBinaryExpressions: false,
     },
   ],
+  'no-extra-semi': [],
+  'no-floating-decimal': [],
+  'no-mixed-operators': [],
+  'no-mixed-spaces-and-tabs': [],
+  'no-multi-spaces': [],
   'no-multiple-empty-lines': [
     {
       max: 1,
@@ -159,12 +213,15 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       maxEOF: 0,
     },
   ],
+  'no-tabs': [],
   'no-trailing-spaces': [
     {
       ignoreComments: false,
       skipBlankLines: false,
     },
   ],
+  'no-whitespace-before-property': [],
+  'nonblock-statement-body-position': ['beside'],
   'object-curly-newline': [
     {
       consistent: true,
@@ -183,27 +240,27 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       allowAllPropertiesOnSameLine: true,
     },
   ],
+  'one-var-declaration-per-line': ['initializations'],
+
+  // 原则上所有运算符都不允许换行，避免破坏直观结构和意图
+  // 对于具有“组合”或“选择”语义的运算符（如 `&&`、`||`、`??`、`+`），放在前一行末尾（after），提示表达式未结束，有助于阅读
+  // 本来 `+` 作为算术运算符是不允许换行的，但是作为字符串拼接运算符时，合理的换行能显著提高可读性
+  // 对于三元表达式的 `?:`，放在下一行开头（before），以突出并对齐结构
   'operator-linebreak': [
-    // 原则上所有运算符都不允许换行，避免破坏直观结构和意图
     'none',
     {
       overrides: {
-        // 对于三元表达式的 `?:`，放在下一行开头（before），以突出并对齐结构
+        '&&': 'after',
+        '+': 'after',
         ':': 'before',
         '?': 'before',
-
-        // ---
-        // 对于具有“组合”或“选择”语义的运算符（如 `&&`、`||`、`??`、`+`），放在前一行末尾（after），提示表达式未结束，有助于阅读
-        '&&': 'after',
         '??': 'after',
         '||': 'after',
-
-        // ---
-        // 本来 `+` 作为算术运算符是不允许换行的，但是作为字符串拼接运算符时，合理的换行能显著提高可读性
-        '+': 'after',
       },
     },
   ],
+  'padded-blocks': ['never'],
+  'quote-props': ['as-needed'],
   quotes: [
     'single',
     {
@@ -211,6 +268,7 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       avoidEscape: true,
     },
   ],
+  'rest-spread-spacing': ['never'],
   semi: [
     'always',
     {
@@ -224,6 +282,10 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       before: false,
     },
   ],
+  'semi-style': ['last'],
+  'space-before-blocks': ['always'],
+  'space-before-function-paren': ['always'],
+  'space-in-parens': ['never'],
   'space-infix-ops': [
     {
       ignoreTypes: false,
@@ -253,6 +315,8 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       before: false,
     },
   ],
+  'template-curly-spacing': ['never'],
+  'template-tag-spacing': ['never'],
   'type-annotation-spacing': [
     {
       after: true,
@@ -264,114 +328,26 @@ const rules: {[K in keyof UnprefixedRuleOptions]: undefined | UnprefixedRuleOpti
       },
     },
   ],
-
-  // --- jsx
-  'jsx-child-element-spacing': undefined,
-  'jsx-closing-bracket-location': ['tag-aligned'],
-  'jsx-closing-tag-location': ['tag-aligned'],
-  'jsx-equals-spacing': ['never'],
-  'jsx-first-prop-new-line': ['multiline'],
-  'jsx-function-call-newline': ['multiline'],
-  'jsx-indent': undefined,
-  'jsx-indent-props': undefined,
-  'jsx-one-expression-per-line': undefined,
-  'jsx-props-no-multi-spaces': [],
-  'jsx-quotes': ['prefer-double'],
-  'jsx-curly-brace-presence': [
-    {
-      children: 'never',
-      propElementValues: 'always',
-      props: 'never',
-    },
-  ],
-  'jsx-curly-newline': [
-    {
-      multiline: 'require',
-      singleline: 'consistent',
-    },
-  ],
-  'jsx-curly-spacing': [
-    {
-      attributes: {
-        when: 'never',
-      },
-      children: {
-        when: 'never',
-      },
-      spacing: {
-        objectLiterals: 'never',
-      },
-    },
-  ],
-  'jsx-max-props-per-line': [
-    {
-      maximum: 1,
-      when: 'multiline',
-    },
-  ],
-  'jsx-newline': [
-    {
-      allowMultilines: true,
-      prevent: true,
-    },
-  ],
-  'jsx-pascal-case': [
-    {
-      allowAllCaps: true,
-      allowLeadingUnderscore: true,
-      allowNamespace: true,
-    },
-  ],
-  'jsx-self-closing-comp': [
-    {
-      component: true,
-      html: true,
-    },
-  ],
-  'jsx-sort-props': [
-    {
-      callbacksLast: true,
-    // shorthandFirst: true,
-    },
-  ],
-
-  'jsx-tag-spacing': [
-    {
-      beforeSelfClosing: 'always',
-    },
-  ],
-  'jsx-wrap-multilines': [
-    {
-      arrow: 'parens-new-line',
-      assignment: 'parens-new-line',
-      condition: 'parens-new-line',
-      declaration: 'parens-new-line',
-      logical: 'parens-new-line',
-      prop: 'parens-new-line',
-      propertyValue: 'parens-new-line',
-      return: 'parens-new-line',
-    },
-  ],
-
+  'type-generic-spacing': [],
+  'type-named-tuple-spacing': [],
+  'wrap-iife': ['inside'],
+  'yield-star-spacing': ['after'],
 };
 
 const prefixedRules: Linter.RulesRecord = {};
 
-for (const key in rules) {
-  // @ts-expect-error ignore
-  const options = rules[key];
-
+for (const [key, options] of Object.entries(rules)) {
   if (options) {
-    prefixedRules[`@stylistic/${key}`] = ['error', ...options];
+    prefixedRules[`stylistic/${key}`] = ['error', ...options];
   }
 }
 
-export const stylisticConfigs: Linter.Config[] = [
+export const stylisticConfigs: ConfigArray = [
   {
-    rules: prefixedRules,
     plugins: {
-      '@stylistic': stylistic,
+      stylistic,
     },
+    rules: prefixedRules,
   },
   ...stylisticSpacingBetweenConfigs,
 ];

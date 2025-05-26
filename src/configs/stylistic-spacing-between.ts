@@ -5,7 +5,8 @@ import switchCase from 'eslint-plugin-switch-case';
 type BlankLineRule = UnprefixedRuleOptions['padding-line-between-statements'][0];
 type StatementType = BlankLineRule['next'];
 
-// 相同的语句在单行的情况下不强制空行，但是需要在与不同语句组之间强制空行的语句
+// 相同的语句在单行的情况下不允许空行
+// 但是要在不同语句之间强制空行的语句
 const groupStatements = [
   'cjs-export',
   'const',
@@ -81,14 +82,21 @@ const blankLineRules: BlankLineRule[] = [
 export const stylisticSpacingBetweenConfigs: Linter.Config[] = [
   {
     plugins: {
-      '@stylistic': stylistic,
-      '@stylistic-enhanced': stylistic,
+      stylistic,
+      'stylistic-enhanced': stylistic,
     },
     rules: {
-      '@stylistic/padding-line-between-statements': ['error', ...blankLineRules],
-
+      // 叠加: Class 多行属性成员之间强制空行
+      'stylistic-enhanced/lines-between-class-members': [
+        'error',
+        'always',
+        {
+          exceptAfterOverload: true,
+          exceptAfterSingleLine: true,
+        },
+      ],
       // Class 方法成员之间强制空行
-      '@stylistic/lines-between-class-members': [
+      'stylistic/lines-between-class-members': [
         'error',
         {
           enforce: [
@@ -105,18 +113,7 @@ export const stylisticSpacingBetweenConfigs: Linter.Config[] = [
           ],
         },
       ],
-
-      // ---
-
-      // 叠加: Class 多行属性成员之间强制空行
-      '@stylistic-enhanced/lines-between-class-members': [
-        'error',
-        'always',
-        {
-          exceptAfterOverload: true,
-          exceptAfterSingleLine: true,
-        },
-      ],
+      'stylistic/padding-line-between-statements': ['error', ...blankLineRules],
     },
   },
   {

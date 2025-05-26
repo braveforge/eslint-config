@@ -1,7 +1,7 @@
-import type { Linter } from 'eslint';
 import unusedImports from 'eslint-plugin-unused-imports';
+import type { ConfigArray } from 'typescript-eslint';
 
-export const unusedImportsConfigs: Linter.Config[] = [
+export const unusedImportsConfigs: ConfigArray = [
   {
     plugins: {
       'unused-imports': unusedImports,
