@@ -10,7 +10,6 @@ const rules: Partial<ESLintRules> = {
       checkForEach: true,
     },
   ],
-  'arrow-body-style': ['error', 'as-needed'],
   'block-scoped-var': 'error',
   camelcase: [
     'error',
