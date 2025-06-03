@@ -21,7 +21,6 @@ const rules: Partial<ESLintRules> = {
     },
   ],
   'class-methods-use-this': 'error',
-  'consistent-return': 'error',
   'constructor-super': 'error',
   curly: 'error',
   'default-case': 'error',
