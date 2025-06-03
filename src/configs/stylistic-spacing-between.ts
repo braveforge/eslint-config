@@ -47,12 +47,13 @@ const blankLineRules: BlankLineRule[] = [
     prev: groupStatements,
   },
 
-  // 相同语句之间不允许空行（多行语句会被覆盖强制空行）
+  // 相同单行语句之间不允许空行（多行语句会被覆盖强制空行）
   // 忽略 `import`：使用 `perfectionist/sort-import` 规则验证
-  // 忽略 `type`：因为目前还没有规则区分 type 的单行和多行，允许手动空行
+  // 忽略 `export`：相邻的 export 可能是不同的语句（const/type/interface/class/function），允许手动换行
+  // 忽略 `type`：因为目前还没有规则区分 type 类型声明的单行和多行，允许手动空行
   ...groupStatements.map(
     (statement): BlankLineRule => ({
-      blankLine: statement === 'import' || statement === 'type' ? 'any' : 'never',
+      blankLine: ['export', 'import', 'type'].includes(statement) ? 'any' : 'never',
       next: statement,
       prev: statement,
     }),
