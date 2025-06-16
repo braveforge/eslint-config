@@ -51,7 +51,7 @@ const rules: Partial<TypescriptRules> = {
   'typescript/no-duplicate-enum-values': 'error',
   'typescript/no-dynamic-delete': 'error',
   'typescript/no-empty-function': 'error',
-  'typescript/no-explicit-any': 'error',
+  'typescript/no-explicit-any': 'warn',
   'typescript/no-extra-non-null-assertion': 'error',
   'typescript/no-extraneous-class': 'error',
   'typescript/no-import-type-side-effects': 'error',

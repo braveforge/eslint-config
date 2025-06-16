@@ -16,17 +16,18 @@
     "build:rule-schemas": "node scripts/build-rule-schemas.js"
   },
   "dependencies": {
-    "@eslint/js": "^9.27.0",
-    "@stylistic/eslint-plugin": "^4.4.0",
+    "@eslint/js": "^9.29.0",
+    "@stylistic/eslint-plugin": "^4.4.1",
     "confusing-browser-globals": "^1.0.11",
-    "eslint-plugin-import-x": "^4.12.2",
-    "eslint-plugin-package-json": "0.31.0",
-    "eslint-plugin-perfectionist": "^4.13.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-import-x": "^4.15.2",
+    "eslint-plugin-package-json": "0.39.2",
+    "eslint-plugin-perfectionist": "^4.14.0",
     "eslint-plugin-switch-case": "^3.0.1",
     "eslint-plugin-unicorn": "^59.0.1",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "globals": "^16.1.0",
-    "typescript-eslint": "^8.32.1"
+    "globals": "^16.2.0",
+    "typescript-eslint": "^8.34.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",
@@ -34,8 +35,5 @@
     "jiti": "^2.4.2",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
-  },
-  "peerDependencies": {
-    "eslint": "^9.27.0"
   }
 }
