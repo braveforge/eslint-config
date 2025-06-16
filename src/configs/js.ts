@@ -125,7 +125,6 @@ const rules: Partial<ESLintRules> = {
   'no-object-constructor': 'error',
   'no-octal': 'error',
   'no-octal-escape': 'error',
-  'no-param-reassign': 'error',
   'no-plusplus': [
     'error',
     {

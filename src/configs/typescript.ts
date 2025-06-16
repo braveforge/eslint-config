@@ -10,6 +10,7 @@ const conflictRules: Partial<ESLintRules> = {
   'no-array-constructor': 'off',
   'no-empty-function': 'off',
   'no-redeclare': 'off',
+  'no-undef': 'off',
   'no-unused-expressions': 'off',
   'no-unused-vars': 'off',
   'no-useless-constructor': 'off',
