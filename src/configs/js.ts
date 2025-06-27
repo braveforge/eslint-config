@@ -1,6 +1,6 @@
 import confusingBrowserGlobals from 'confusing-browser-globals';
-import type { Linter } from 'eslint';
 import type { ESLintRules } from 'eslint/rules';
+import type { ConfigArray } from 'typescript-eslint';
 
 const rules: Partial<ESLintRules> = {
   'accessor-pairs': 'error',
@@ -209,6 +209,8 @@ const rules: Partial<ESLintRules> = {
   yoda: 'error',
 };
 
-export const js: Linter.Config = {
-  rules,
-};
+export const jsConfigs: ConfigArray = [
+  {
+    rules,
+  },
+];

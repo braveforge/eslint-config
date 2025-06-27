@@ -1,6 +1,6 @@
 import stylistic, { type UnprefixedRuleOptions } from '@stylistic/eslint-plugin';
-import type { Linter } from 'eslint';
 import switchCase from 'eslint-plugin-switch-case';
+import type { ConfigArray } from 'typescript-eslint';
 
 type BlankLineRule = UnprefixedRuleOptions['padding-line-between-statements'][0];
 type StatementType = BlankLineRule['next'];
@@ -80,7 +80,7 @@ const blankLineRules: BlankLineRule[] = [
   },
 ];
 
-export const stylisticSpacingBetweenConfigs: Linter.Config[] = [
+export const stylisticSpacingBetweenConfigs: ConfigArray = [
   {
     plugins: {
       stylistic,

@@ -1,7 +1,7 @@
 import globals from 'globals';
 import type { ConfigArray } from 'typescript-eslint';
 import { importXConfigs } from './configs/import-x';
-import { js } from './configs/js';
+import { jsConfigs } from './configs/js';
 import { packageJsonConfigs } from './configs/package-json';
 import { perfectionistConfigs } from './configs/perfectionist';
 import { stylisticConfigs } from './configs/stylistic';
@@ -70,7 +70,7 @@ function createBase (options?: Options): ConfigArray {
         sourceType: 'module',
       },
     },
-    js,
+    ...jsConfigs,
   ];
 }
 
