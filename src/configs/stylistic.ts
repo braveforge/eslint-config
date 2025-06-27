@@ -241,24 +241,7 @@ const rules: Partial<UnprefixedRuleOptions> = {
     },
   ],
   'one-var-declaration-per-line': ['initializations'],
-
-  // 原则上所有运算符都不允许换行，避免破坏直观结构和意图
-  // 对于具有“组合”或“选择”语义的运算符（如 `&&`、`||`、`??`、`+`），放在前一行末尾（after），提示表达式未结束，有助于阅读
-  // 本来 `+` 作为算术运算符是不允许换行的，但是作为字符串拼接运算符时，合理的换行能显著提高可读性
-  // 对于三元表达式的 `?:`，放在下一行开头（before），以突出并对齐结构
-  'operator-linebreak': [
-    'none',
-    {
-      overrides: {
-        '&&': 'after',
-        '+': 'after',
-        ':': 'before',
-        '?': 'before',
-        '??': 'after',
-        '||': 'after',
-      },
-    },
-  ],
+  'operator-linebreak': [],
   'padded-blocks': ['never'],
   'quote-props': ['as-needed'],
   quotes: [
