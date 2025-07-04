@@ -16,7 +16,10 @@ const rules: Partial<UnicornRules> = {
   'unicorn/filename-case': [
     'error',
     {
-      case: 'kebabCase',
+      cases: {
+        kebabCase: true,
+        pascalCase: true,
+      },
     },
   ],
   'unicorn/new-for-builtins': 'error',
@@ -63,7 +66,6 @@ const rules: Partial<UnicornRules> = {
   'unicorn/no-useless-undefined': 'error',
   'unicorn/no-zero-fractions': 'error',
   'unicorn/number-literal-case': 'error',
-  'unicorn/numeric-separators-style': 'error',
   'unicorn/prefer-add-event-listener': 'error',
   'unicorn/prefer-array-find': 'error',
   'unicorn/prefer-array-flat': 'error',
