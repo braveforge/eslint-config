@@ -13,12 +13,9 @@ const valuesFirst = {
 const sortObjectTypesOptions = {
   ...unsorted,
   groups: [
-    'required-property',
-    'required-method',
-    'optional-property',
-    'optional-method',
-    'required-index-signature',
-    'optional-index-signature',
+    'required-member',
+    'optional-member',
+    'index-signature',
     'unknown',
   ],
 };
@@ -77,31 +74,16 @@ const rules: Partial<PerfectionistRules> = {
   ],
   'perfectionist/sort-interfaces': ['error', sortObjectTypesOptions],
   'perfectionist/sort-intersection-types': ['error', sortCompoundTypesOptions],
-  // 'perfectionist/sort-jsx-props': 'off', // Using `@stylistic/jsx-sort-props`
-  'perfectionist/sort-maps': 'error',
   'perfectionist/sort-modules': [
     'error',
     {
       ...unsorted,
       groups: [
-        'declare-enum',
         'enum',
-        'export-enum',
-        'declare-interface',
-        'interface',
-        'export-interface',
-        'export-default-interface',
-        'declare-type',
         'type',
-        'export-type',
-        'declare-class',
+        'interface',
         'class',
-        'export-class',
-        'export-default-class',
-        'declare-function',
         'function',
-        'export-function',
-        'export-default-function',
         'unknown',
       ],
     },
@@ -115,17 +97,6 @@ const rules: Partial<PerfectionistRules> = {
     valuesFirst,
   ],
   'perfectionist/sort-object-types': ['error', sortObjectTypesOptions],
-  'perfectionist/sort-objects': [
-    'error',
-    {
-      ...unsorted,
-      groups: [
-        'property',
-        'method',
-      ],
-    },
-  ],
-  'perfectionist/sort-sets': 'error',
   'perfectionist/sort-switch-case': 'error',
   'perfectionist/sort-union-types': ['error', sortCompoundTypesOptions],
   'perfectionist/sort-variable-declarations': [
