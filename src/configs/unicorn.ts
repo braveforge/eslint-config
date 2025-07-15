@@ -101,7 +101,6 @@ const rules: Partial<UnicornRules> = {
   'unicorn/prefer-string-starts-ends-with': 'error',
   'unicorn/prefer-string-trim-start-end': 'error',
   'unicorn/prefer-switch': 'error',
-  'unicorn/prefer-ternary': 'error',
   'unicorn/require-array-join-separator': 'error',
   'unicorn/require-number-to-fixed-digits-argument': 'error',
   'unicorn/switch-case-braces': 'error',
