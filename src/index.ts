@@ -10,6 +10,8 @@ import { unicornConfigs } from './configs/unicorn';
 import { unusedImportsConfigs } from './configs/unused-imports';
 import { allGlobs } from './globs';
 
+type GlobalNames = Array<keyof typeof globals>;
+
 interface Flags {
   importX?: boolean;
   packageJson?: boolean;
@@ -30,8 +32,6 @@ interface Options {
    */
   globals?: GlobalNames;
 }
-
-type GlobalNames = Array<keyof typeof globals>;
 
 const defaultGlobals: GlobalNames = ['browser', 'node'];
 

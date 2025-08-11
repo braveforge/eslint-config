@@ -118,7 +118,10 @@ const rules: Partial<UnprefixedRuleOptions> = {
   ],
   'jsx-tag-spacing': [
     {
+      afterOpening: 'never',
+      beforeClosing: 'never',
       beforeSelfClosing: 'always',
+      closingSlash: 'never',
     },
   ],
   'jsx-wrap-multilines': [
@@ -298,7 +301,7 @@ const rules: Partial<UnprefixedRuleOptions> = {
       before: false,
     },
   ],
-  'template-curly-spacing': ['never'],
+  'template-curly-spacing': ['always'],
   'template-tag-spacing': ['never'],
   'type-annotation-spacing': [
     {
@@ -321,7 +324,7 @@ const prefixedRules: Linter.RulesRecord = {};
 
 for (const [key, options] of Object.entries(rules)) {
   if (options) {
-    prefixedRules[`stylistic/${key}`] = ['error', ...options];
+    prefixedRules[`stylistic/${ key }`] = ['error', ...options];
   }
 }
 
