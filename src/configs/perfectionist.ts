@@ -74,6 +74,7 @@ const rules: Partial<PerfectionistRules> = {
   ],
   'perfectionist/sort-interfaces': ['error', sortObjectTypesOptions],
   'perfectionist/sort-intersection-types': ['error', sortCompoundTypesOptions],
+  'perfectionist/sort-maps': 'error',
   'perfectionist/sort-modules': [
     'error',
     {
@@ -97,6 +98,7 @@ const rules: Partial<PerfectionistRules> = {
     valuesFirst,
   ],
   'perfectionist/sort-object-types': ['error', sortObjectTypesOptions],
+  'perfectionist/sort-sets': 'error',
   'perfectionist/sort-switch-case': 'error',
   'perfectionist/sort-union-types': ['error', sortCompoundTypesOptions],
   'perfectionist/sort-variable-declarations': [
